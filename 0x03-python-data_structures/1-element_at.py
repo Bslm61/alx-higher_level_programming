@@ -1,14 +1,7 @@
-# 1-element_at.py
-
+#!/usr/bin/python3
 def element_at(my_list, idx):
-    """Retrieve an element from a list."""
-    if idx < 0 or idx > (len(my_list) - 1):
+    tam = len(my_list)
+    if idx < 0 or idx >= tam or tam == 0:
         return None
-    return (my_list[idx])
-# 1-element_at.py
-
-def element_at(my_list, idx):
-    """Retrieve an element from a list."""
-    if idx < 0 or idx > (len(my_list) - 1):
-        return None
-    return (my_list[idx])
+    else:
+        return my_list[idx]

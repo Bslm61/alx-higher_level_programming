@@ -1,7 +1,9 @@
-# 8-multiple_returns.py
-
+#!/usr/bin/python3
 def multiple_returns(sentence):
-    """Returns the length of a string and its first character."""
-    if sentence == "":
-        return (0, None)
-    return (len(sentence), sentence[0])
+    if len(sentence) == 0:
+        list = [len(sentence), None]
+        new_tuplex = tuple(list)
+    else:
+        list = [len(sentence), sentence[0]]
+        new_tuplex = tuple(list)
+    return new_tuplex
