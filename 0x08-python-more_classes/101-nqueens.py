@@ -2,7 +2,7 @@
 """Solves the N-queens puzzle.
 
 Determines all possible solutions to placing N
-N non-attacking queens on an NxN chessboard.
+non-attacking queens on an NxN chessboard.
 
 Example:
     $ ./101-nqueens.py N
@@ -68,8 +68,8 @@ def recursive_solve(board, col):
 def get_solution(board):
     """Return the list of lists representation of a solved chessboard."""
     solution = []
-    for r in range(len(board)):
-        for c in range(len(board)):
+    for c in range(len(board)):
+        for r in range(len(board)):
             if board[r][c] == "Q":
                 solution.append([r, c])
     return solution
