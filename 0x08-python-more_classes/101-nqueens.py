@@ -1,6 +1,7 @@
 import sys
 
 def is_safe(board, row, col, n):
+    # Check if it's safe to place a queen at the given position
     for i in range(col):
         if board[row][i] == 1:
             return False
@@ -15,30 +16,30 @@ def is_safe(board, row, col, n):
 
     return True
 
+def print_solution(board):
+    # Print the N Queens solution
+    for row in board:
+        print(row)
+
+def solve_nqueens_util(board, col, n):
+    # Recursive utility function to solve N Queens
+    if col == n:
+        print_solution(board)
+        return
+
+    for i in range(n):
+        if is_safe(board, i, col, n):
+            board[i][col] = 1
+            solve_nqueens_util(board, col + 1, n)
+            board[i][col] = 0
+
 def solve_nqueens(n):
     if n < 4:
         print("N must be at least 4")
         sys.exit(1)
 
     board = [[0 for _ in range(n)] for _ in range(n)]
-    solutions = []
-    solve_nqueens_util(board, 0, n, solutions)
-    return solutions
-
-def solve_nqueens_util(board, col, n, solutions):
-    if col == n:
-        solution = []
-        for i in range(n):
-            row = [i, board[i].index(1)]
-            solution.append(row)
-        solutions.append(solution)
-        return
-
-    for i in range(n):
-        if is_safe(board, i, col, n):
-            board[i][col] = 1
-            solve_nqueens_util(board, col + 1, n, solutions)
-            board[i][col] = 0
+    solve_nqueens_util(board, 0, n)
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
@@ -51,6 +52,4 @@ if __name__ == "__main__":
         print("N must be a number")
         sys.exit(1)
 
-    solutions = solve_nqueens(N)
-    for solution in solutions:
-        print(solution)
+    solve_nqueens(N)
